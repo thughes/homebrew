@@ -20,6 +20,7 @@ class Rpm < Formula
     # Note - MacPorts also builds without optimizations. This seems to fix several
     # random crashes
     ENV.append 'CPPFLAGS', "-I#{HOMEBREW_PREFIX}/include/nss -I#{HOMEBREW_PREFIX}/include/nspr"
+    ENV.append 'CFLAGS', "-O0"
     system "./configure", "--disable-dependency-tracking", "--prefix=#{prefix}", "--with-external-db", "--sysconfdir=#{HOMEBREW_PREFIX}/etc", "--disable-optimize", "--without-javaglue", "--without-apidocs", "--enable-python", "--localstatedir=#{HOMEBREW_PREFIX}/var"
     system "make"
     system "make install"
